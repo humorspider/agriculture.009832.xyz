@@ -1,15 +1,808 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>我的个人网站</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎来到我的数字世界</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        h1 { color: #333; }
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(28, 58, 103, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(88, 28, 103, 0.2) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* 终端样式 */
+        .terminal {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .terminal-header {
+            background: #21262d;
+            padding: 0.8rem 1rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #30363d;
+        }
+        
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .close { background: #ff5f56; }
+        .minimize { background: #ffbd2e; }
+        .maximize { background: #27ca3f; }
+        
+        .terminal-title {
+            margin-left: 1rem;
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+        
+        .terminal-body {
+            padding: 1.5rem;
+            min-height: 400px;
+        }
+        
+        .command-line {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+        
+        .prompt {
+            color: #7ee787;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+        
+        .command {
+            color: #c9d1d9;
+            background: transparent;
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 1rem;
+        }
+        
+        .output {
+            margin-bottom: 1rem;
+            white-space: pre-wrap;
+        }
+        
+        /* 卡片样式 */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: #7ee787;
+        }
+        
+        .card h3 {
+            color: #7ee787;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card h3::before {
+            content: ">";
+            margin-right: 8px;
+            color: #ff7b72;
+        }
+        
+        .card ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        
+        .card li::before {
+            content: "-";
+            position: absolute;
+            left: 0;
+            color: #ff7b72;
+        }
+        
+        .card a {
+            color: #58a6ff;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .card a:hover {
+            color: #7ee787;
+            text-decoration: underline;
+        }
+        
+        /* 动态背景元素 */
+        .floating {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: rgba(126, 231, 135, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .terminal-body {
+                padding: 1rem;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 动画 */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .cursor {
+            animation: blink 1s infinite;
+            color: #7ee787;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid #7ee787;
+            white-space: nowrap;
+            margin: 0;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #7ee787 }
+        }
+
+        /* 新增：主题切换按钮 */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: #c9d1d9;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            background: #30363d;
+        }
+
+        /* 浅色主题 */
+        body.light-theme {
+            background: #f6f8fa;
+            color: #24292f;
+        }
+
+        body.light-theme .terminal {
+            background: #ffffff;
+            border-color: #d0d7de;
+        }
+
+        body.light-theme .terminal-header {
+            background: #f6f8fa;
+            border-bottom-color: #d0d7de;
+        }
+
+        body.light-theme .card {
+            background: #ffffff;
+            border-color: #d0d7de;
+        }
+
+        /* 新增：访客计数器 */
+        .visitor-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            color: #7ee787;
+        }
+
+        /* 新增：音乐播放器 */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .music-control {
+            background: none;
+            border: none;
+            color: #c9d1d9;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* 新增：数字雨效果容器 */
+        #matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+        }
     </style>
 </head>
 <body>
-    <h1>欢迎来到我的网站！</h1>
-    <p>这是我的 GitHub Pages 网站。</p>
-    <p>正在建设中...</p>
+    <!-- 主题切换按钮 -->
+    <button class="theme-toggle" id="themeToggle">🌙 暗色模式</button>
+
+    <!-- 音乐播放器 -->
+    <div class="music-player" id="musicPlayer" style="display: none;">
+        <button class="music-control" id="playBtn">▶️</button>
+        <span id="nowPlaying">背景音乐</span>
+        <button class="music-control" id="muteBtn">🔊</button>
+    </div>
+
+    <!-- 访客计数器 -->
+    <div class="visitor-counter">
+        访客: <span id="visitorCount">1</span>
+    </div>
+
+    <div class="container">
+        <!-- 终端界面 -->
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-buttons">
+                    <div class="terminal-button close"></div>
+                    <div class="terminal-button minimize"></div>
+                    <div class="terminal-button maximize"></div>
+                </div>
+                <div class="terminal-title">terminal — bash — 80×24</div>
+            </div>
+            <div class="terminal-body">
+                <div class="output">
+                    <span style="color: #7ee787;">visitor@yourdomain.com</span>:<span style="color: #58a6ff;">~</span>$ welcome
+                </div>
+                <div class="output">
+                    <div class="typewriter">
+                        <span style="color: #ff7b72;">欢迎来到我的数字世界!</span>
+                    </div>
+                </div>
+                <div class="output">
+                    这是一个由 GitHub Pages + Cloudflare 驱动的个人空间。
+                    在这里，我分享我的项目、想法和探索。
+                </div>
+                <div class="output">
+                    输入 <span style="color: #7ee787;">'help'</span> 查看可用命令...
+                </div>
+                <div class="command-line">
+                    <span class="prompt">visitor@yourdomain.com:~$</span>
+                    <input type="text" class="command" id="command-input" placeholder="输入命令..." autofocus>
+                    <span class="cursor">|</span>
+                </div>
+                <div id="command-output"></div>
+            </div>
+        </div>
+        
+        <!-- 内容卡片 -->
+        <div class="cards">
+            <div class="card">
+                <h3>关于我</h3>
+                <p>一名热爱技术的开发者，喜欢探索Web技术、自动化和创意编程。</p>
+                <ul>
+                    <li>📍 基于地球的碳基生命</li>
+                    <li>💻 全栈开发者</li>
+                    <li>🌱 正在学习: Cloudflare, AI, Web3</li>
+                    <li>🎯 当前目标: <span id="currentGoal">构建更酷的网站</span></li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>我的项目</h3>
+                <p>我一直在构建有趣的项目：</p>
+                <ul>
+                    <li><a href="#" onclick="executeCommand('project demo')">个人自动化系统</a> - 自动化日常任务</li>
+                    <li><a href="#" onclick="executeCommand('project viz')">数据可视化工具</a> - 将复杂数据转化为直观图表</li>
+                    <li><a href="#" onclick="executeCommand('project open')">开源贡献</a> - 参与多个开源项目</li>
+                    <li><a href="#" onclick="executeCommand('project secret')">秘密项目</a> - 🔒 开发中</li>
+                </ul>
+            </div>
+            
+            <div class="card">
+                <h3>联系我</h3>
+                <p>想聊聊技术或合作？通过这些方式找到我：</p>
+                <ul>
+                    <li>📧 <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></li>
+                    <li>🐙 <a href="https://github.com/yourusername">GitHub</a></li>
+                    <li>🐦 <a href="#">Twitter</a></li>
+                    <li>💼 <a href="#">LinkedIn</a></li>
+                </ul>
+                <button onclick="executeCommand('contact form')" style="margin-top: 10px; background: #238636; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">发送消息</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 数字雨画布 -->
+    <canvas id="matrix-rain"></canvas>
+
+    <script>
+        // 创建浮动背景元素
+        function createFloatingElements() {
+            const count = 20;
+            for (let i = 0; i < count; i++) {
+                const floating = document.createElement('div');
+                floating.classList.add('floating');
+                
+                const size = Math.random() * 6 + 2;
+                floating.style.width = `${size}px`;
+                floating.style.height = `${size}px`;
+                floating.style.left = `${Math.random() * 100}vw`;
+                floating.style.top = `${Math.random() * 100}vh`;
+                
+                const duration = Math.random() * 20 + 10;
+                floating.style.animation = `float ${duration}s linear infinite`;
+                
+                document.body.appendChild(floating);
+            }
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes float {
+                    0% {
+                        transform: translate(0, 0) rotate(0deg);
+                        opacity: 0.7;
+                    }
+                    25% {
+                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(90deg);
+                    }
+                    50% {
+                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(180deg);
+                        opacity: 0.3;
+                    }
+                    75% {
+                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(270deg);
+                    }
+                    100% {
+                        transform: translate(0, 0) rotate(360deg);
+                        opacity: 0.7;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // 主题切换功能
+        function setupThemeToggle() {
+            const themeToggle = document.getElementById('themeToggle');
+            const currentTheme = localStorage.getItem('theme') || 'dark';
+            
+            if (currentTheme === 'light') {
+                document.body.classList.add('light-theme');
+                themeToggle.textContent = '🌞 浅色模式';
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                if (document.body.classList.contains('light-theme')) {
+                    localStorage.setItem('theme', 'light');
+                    themeToggle.textContent = '🌞 浅色模式';
+                } else {
+                    localStorage.setItem('theme', 'dark');
+                    themeToggle.textContent = '🌙 暗色模式';
+                }
+            });
+        }
+        
+        // 访客计数器（模拟）
+        function setupVisitorCounter() {
+            let count = localStorage.getItem('visitorCount') || 1;
+            count = parseInt(count) + 1;
+            localStorage.setItem('visitorCount', count);
+            document.getElementById('visitorCount').textContent = count;
+        }
+        
+        // 音乐播放器功能
+        function setupMusicPlayer() {
+            const musicPlayer = document.getElementById('musicPlayer');
+            const playBtn = document.getElementById('playBtn');
+            const muteBtn = document.getElementById('muteBtn');
+            let isPlaying = false;
+            
+            // 显示音乐播放器
+            musicPlayer.style.display = 'flex';
+            
+            playBtn.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                playBtn.textContent = isPlaying ? '⏸️' : '▶️';
+                // 在实际使用中，这里可以控制音频播放
+                if (isPlaying) {
+                    document.getElementById('nowPlaying').textContent = '🎵 背景音乐';
+                }
+            });
+            
+            muteBtn.addEventListener('click', () => {
+                const isMuted = muteBtn.textContent === '🔇';
+                muteBtn.textContent = isMuted ? '🔊' : '🔇';
+            });
+        }
+        
+        // 数字雨效果
+        function setupMatrixRain() {
+            const canvas = document.getElementById('matrix-rain');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const chars = '01';
+            const charSize = 14;
+            const columns = canvas.width / charSize;
+            const drops = [];
+            
+            for (let i = 0; i < columns; i++) {
+                drops[i] = 1;
+            }
+            
+            function draw() {
+                ctx.fillStyle = 'rgba(13, 17, 23, 0.05)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = '#7ee787';
+                ctx.font = charSize + 'px monospace';
+                
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                    ctx.fillText(text, i * charSize, drops[i] * charSize);
+                    
+                    if (drops[i] * charSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    
+                    drops[i]++;
+                }
+            }
+            
+            setInterval(draw, 33);
+            
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        }
+        
+        // 扩展命令处理
+        function setupCommandLine() {
+            const commandInput = document.getElementById('command-input');
+            const commandOutput = document.getElementById('command-output');
+            
+            const commands = {
+                help: () => `可用命令:
+  about     - 关于我
+  projects  - 我的项目
+  contact   - 联系信息
+  clear     - 清空终端
+  date      - 显示当前日期
+  weather   - 查看天气（模拟）
+  matrix    - 开启/关闭数字雨
+  music     - 控制背景音乐
+  theme     - 切换主题
+  echo <文本> - 回显文本
+  joke      - 听个笑话
+  secret    - 发现隐藏功能`,
+                
+                about: () => `我是一名全栈开发者，对创造优雅解决复杂问题的方案充满热情。
+在我的数字花园里，我探索技术、设计和创意的交汇点。
+
+技能栈:
+  • 前端: HTML/CSS/JavaScript, React, Vue
+  • 后端: Node.js, Python, Cloudflare Workers
+  • 工具: Git, Docker, VS Code`,
+                
+                projects: () => `我的项目:
+  • 个人自动化系统 - 使用脚本自动化日常任务
+  • 数据可视化工具 - 将复杂数据转化为直观图表
+  • 多个开源贡献 - 参与社区驱动的项目
+  • 秘密项目 - 🤫 即将公布`,
+                
+                contact: () => `联系方式:
+  📧 邮箱: hello@yourdomain.com
+  🐙 GitHub: github.com/yourusername
+  🐦 Twitter: @yourusername
+  💼 LinkedIn: linkedin.com/in/yourusername`,
+                
+                date: () => new Date().toLocaleString('zh-CN'),
+                
+                clear: () => {
+                    commandOutput.innerHTML = '';
+                    return '';
+                },
+                
+                echo: (args) => args.join(' '),
+                
+                weather: () => `天气预报（模拟）:
+  🌤️  北京: 15°C, 晴朗
+  🌧️  上海: 18°C, 小雨
+  ❄️  哈尔滨: -5°C, 雪
+  数据更新时间: ${new Date().toLocaleTimeString('zh-CN')}`,
+                
+                matrix: () => {
+                    const canvas = document.getElementById('matrix-rain');
+                    canvas.style.display = canvas.style.display === 'none' ? 'block' : 'none';
+                    return `数字雨效果 ${canvas.style.display === 'none' ? '已关闭' : '已开启'}`;
+                },
+                
+                music: () => {
+                    const player = document.getElementById('musicPlayer');
+                    player.style.display = player.style.display === 'none' ? 'flex' : 'none';
+                    return `音乐播放器 ${player.style.display === 'none' ? '已隐藏' : '已显示'}`;
+                },
+                
+                theme: () => {
+                    document.getElementById('themeToggle').click();
+                    return '主题已切换';
+                },
+                
+                joke: () => {
+                    const jokes = [
+                        "为什么程序员喜欢黑暗模式？因为光会吸引bug！",
+                        "我写代码的速度比光速还快...至少在截止日期前是这样。",
+                        "十个程序员挤在公交车里，没人下车。为什么？因为他们会互相\"继承\"。",
+                        "程序员最常用的谎言：1. 我以后再写文档 2. 这在我电脑上是好的 3. 只需要改一行代码"
+                    ];
+                    return jokes[Math.floor(Math.random() * jokes.length)];
+                },
+                
+                secret: () => {
+                    setTimeout(() => {
+                        const output = document.createElement('div');
+                        output.className = 'output';
+                        output.innerHTML = '<span style="color: #ff7b72;">🎉 恭喜你发现了隐藏功能！</span>\n你获得了\"数字探险家\"成就！';
+                        commandOutput.appendChild(output);
+                        commandOutput.scrollTop = commandOutput.scrollHeight;
+                    }, 1000);
+                    return '正在解锁隐藏功能...';
+                },
+                
+                // 项目演示命令
+                'project demo': () => `个人自动化系统演示:
+  
+  这个项目帮助我自动化日常任务:
+  • 📧 自动分类和回复邮件
+  • 📊 自动生成日报和周报
+  • 🗂️ 自动整理下载文件夹
+  • 🔄 自动备份重要文件
+  
+  技术栈: Python, Bash, Cron Jobs
+  状态: ✅ 运行中`,
+                
+                'project viz': () => `数据可视化工具:
+  
+  将复杂数据转化为直观的交互式图表:
+  • 📈 实时数据仪表板
+  • 🌍 地理数据可视化
+  • 🔗 网络关系图
+  • 📊 自定义图表类型
+  
+  技术栈: D3.js, React, Node.js
+  状态: 🚧 持续开发中`,
+                
+                'project open': () => `开源贡献:
+  
+  我积极参与的开源项目:
+  • 🔧 工具库维护
+  • 🐛 Bug修复和功能开发
+  • 📚 文档改进
+  • 🌐 国际化支持
+  
+  理念: 回馈社区，共同进步`,
+                
+                'project secret': () => `秘密项目:
+  
+  🤫 这个项目还在保密阶段...
+  
+  提示:
+  • 涉及人工智能和创意编程
+  • 预计下个季度公布
+  • 可能会改变一些东西
+  
+  敬请期待...`,
+                
+                'contact form': () => {
+                    setTimeout(() => {
+                        const output = document.createElement('div');
+                        output.className = 'output';
+                        output.innerHTML = `
+联系表单（模拟）:
+  
+姓名: [____________]
+邮箱: [____________]
+消息: [________________________]
+                      [________________________]
+                      [________________________]
+  
+              [ 取消 ]       [ 发送消息 ]
+  
+注意: 这是一个演示。实际使用时可以集成真实表单处理服务。`;
+                        commandOutput.appendChild(output);
+                        commandOutput.scrollTop = commandOutput.scrollHeight;
+                    }, 500);
+                    return '正在加载联系表单...';
+                }
+            };
+            
+            // 全局函数，让HTML可以调用
+            window.executeCommand = function(cmd) {
+                const parts = cmd.split(' ');
+                const command = parts[0];
+                const args = parts.slice(1);
+                
+                if (commands[command]) {
+                    const result = commands[command](args);
+                    if (result) {
+                        addOutput(result);
+                    }
+                }
+            };
+            
+            function addOutput(text) {
+                const output = document.createElement('div');
+                output.className = 'output';
+                output.textContent = text;
+                commandOutput.appendChild(output);
+                commandOutput.scrollTop = commandOutput.scrollHeight;
+            }
+            
+            commandInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const input = this.value.trim();
+                    this.value = '';
+                    
+                    if (input === '') return;
+                    
+                    const inputLine = document.createElement('div');
+                    inputLine.className = 'output';
+                    inputLine.innerHTML = `<span style="color: #7ee787;">visitor@yourdomain.com</span>:<span style="color: #58a6ff;">~</span>$ ${input}`;
+                    commandOutput.appendChild(inputLine);
+                    
+                    const parts = input.split(' ');
+                    const cmd = parts[0].toLowerCase();
+                    const args = parts.slice(1);
+                    
+                    let result = '';
+                    if (commands[cmd]) {
+                        result = commands[cmd](args);
+                    } else {
+                        result = `命令未找到: ${cmd}。输入 'help' 查看可用命令。`;
+                    }
+                    
+                    if (result) {
+                        const outputLine = document.createElement('div');
+                        outputLine.className = 'output';
+                        outputLine.textContent = result;
+                        commandOutput.appendChild(outputLine);
+                    }
+                    
+                    commandOutput.scrollTop = commandOutput.scrollHeight;
+                }
+            });
+        }
+        
+        // 动态目标更新
+        function setupDynamicGoals() {
+            const goals = [
+                "构建更酷的网站",
+                "学习新的框架",
+                "贡献开源项目",
+                "写技术博客",
+                "构建个人API",
+                "学习云原生技术"
+            ];
+            
+            let currentIndex = 0;
+            const goalElement = document.getElementById('currentGoal');
+            
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % goals.length;
+                goalElement.style.opacity = 0;
+                
+                setTimeout(() => {
+                    goalElement.textContent = goals[currentIndex];
+                    goalElement.style.opacity = 1;
+                }, 500);
+            }, 3000);
+        }
+        
+        // 初始化所有功能
+        document.addEventListener('DOMContentLoaded', function() {
+            createFloatingElements();
+            setupThemeToggle();
+            setupVisitorCounter();
+            setupMusicPlayer();
+            setupMatrixRain();
+            setupCommandLine();
+            setupDynamicGoals();
+            
+            // 添加一些初始输出
+            setTimeout(() => {
+                const output = document.getElementById('command-output');
+                const welcome = document.createElement('div');
+                welcome.className = 'output';
+                welcome.innerHTML = '<span style="color: #58a6ff;">提示:</span> 试试输入 <span style="color: #7ee787;">secret</span> 发现隐藏功能！';
+                output.appendChild(welcome);
+            }, 2000);
+        });
+    </script>
 </body>
 </html>
