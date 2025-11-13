@@ -3,134 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎来到我的数字世界</title>
+    <title>农业数据分析专家 | 药效实验与作物研究</title>
     <style>
-        /* 基础样式 */
+        /* 基础样式 - 农业主题色彩 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Courier New', monospace;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-green: #2d5a27;
+            --secondary-green: #4a7c59;
+            --light-green: #8fcb9b;
+            --earth-brown: #8d6b4f;
+            --sand: #d4b896;
+            --cream: #f5f1e6;
+            --dark-text: #333333;
         }
         
         body {
-            background: #0d1117;
-            color: #c9d1d9;
+            background: var(--cream);
+            color: var(--dark-text);
             line-height: 1.6;
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(28, 58, 103, 0.2) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(88, 28, 103, 0.2) 0%, transparent 20%);
+                radial-gradient(circle at 5% 15%, rgba(141, 107, 79, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 95% 85%, rgba(77, 124, 89, 0.05) 0%, transparent 25%);
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
         
-        /* 终端样式 */
-        .terminal {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        /* 头部样式 */
+        header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--secondary-green) 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 5px solid var(--earth-brown);
+            position: relative;
             overflow: hidden;
-            margin-bottom: 2rem;
         }
         
-        .terminal-header {
-            background: #21262d;
-            padding: 0.8rem 1rem;
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%234a7c59' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid var(--cream);
+            margin: 0 auto 1rem;
+            background-color: var(--light-green);
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #30363d;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-green);
         }
         
-        .terminal-buttons {
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* 导航样式 */
+        nav {
+            background: var(--earth-brown);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
-            gap: 8px;
+            justify-content: center;
         }
         
-        .terminal-button {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background 0.3s;
         }
         
-        .close { background: #ff5f56; }
-        .minimize { background: #ffbd2e; }
-        .maximize { background: #27ca3f; }
-        
-        .terminal-title {
-            margin-left: 1rem;
-            color: #8b949e;
-            font-size: 0.9rem;
-        }
-        
-        .terminal-body {
-            padding: 1.5rem;
-            min-height: 400px;
-        }
-        
-        .command-line {
-            display: flex;
-            margin-bottom: 1rem;
-        }
-        
-        .prompt {
-            color: #7ee787;
-            margin-right: 10px;
-            white-space: nowrap;
-        }
-        
-        .command {
-            color: #c9d1d9;
-            background: transparent;
-            border: none;
-            outline: none;
-            width: 100%;
-            font-size: 1rem;
-        }
-        
-        .output {
-            margin-bottom: 1rem;
-            white-space: pre-wrap;
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
         
         /* 卡片样式 */
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
         }
         
         .card {
-            background: #161b22;
-            border: 1px solid #30363d;
+            background: white;
             border-radius: 8px;
-            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
             transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--secondary-green);
         }
         
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            border-color: #7ee787;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
         
-        .card h3 {
-            color: #7ee787;
+        .card h2 {
+            color: var(--primary-green);
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
         }
         
-        .card h3::before {
-            content: ">";
-            margin-right: 8px;
-            color: #ff7b72;
+        .card h2 i {
+            margin-right: 10px;
+            font-size: 1.5rem;
         }
         
         .card ul {
@@ -139,38 +162,183 @@
         }
         
         .card li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.2rem;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
             position: relative;
         }
         
         .card li::before {
-            content: "-";
+            content: "🌱";
             position: absolute;
             left: 0;
-            color: #ff7b72;
         }
         
-        .card a {
-            color: #58a6ff;
-            text-decoration: none;
-            transition: color 0.2s;
+        /* 专业技能进度条 */
+        .skill {
+            margin-bottom: 1.5rem;
         }
         
-        .card a:hover {
-            color: #7ee787;
-            text-decoration: underline;
+        .skill-name {
+            display: flex;
+            justify-content: between;
+            margin-bottom: 0.5rem;
         }
         
-        /* 动态背景元素 */
-        .floating {
-            position: absolute;
-            width: 8px;
+        .skill-bar {
             height: 8px;
-            background: rgba(126, 231, 135, 0.5);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: -1;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-level {
+            height: 100%;
+            background: var(--secondary-green);
+            border-radius: 4px;
+        }
+        
+        /* 数据可视化展示区 */
+        .data-visualization {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .viz-title {
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .chart {
+            background: var(--cream);
+            border-radius: 8px;
+            padding: 1.5rem;
+            height: 250px;
+            position: relative;
+        }
+        
+        .chart-title {
+            font-size: 1rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        /* 实验数据表格 */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        
+        .data-table th, .data-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .data-table th {
+            background: var(--light-green);
+            color: var(--primary-green);
+        }
+        
+        .data-table tr:hover {
+            background: #f9f9f9;
+        }
+        
+        /* 联系表单 */
+        .contact-form {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary-green);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(77, 124, 89, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: var(--secondary-green);
+        }
+        
+        /* 页脚 */
+        footer {
+            background: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .social-link {
+            color: white;
+            margin: 0 1rem;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-link:hover {
+            color: var(--light-green);
         }
         
         /* 响应式设计 */
@@ -179,629 +347,421 @@
                 padding: 1rem;
             }
             
-            .terminal-body {
-                padding: 1rem;
+            h1 {
+                font-size: 2rem;
             }
             
             .cards {
                 grid-template-columns: 1fr;
             }
+            
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-container {
+                flex-wrap: wrap;
+            }
+            
+            .nav-link {
+                margin: 0.25rem;
+                padding: 0.5rem 1rem;
+            }
         }
         
-        /* 动画 */
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .cursor {
-            animation: blink 1s infinite;
-            color: #7ee787;
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
         }
         
-        .typewriter {
-            overflow: hidden;
-            border-right: 2px solid #7ee787;
-            white-space: nowrap;
-            margin: 0;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        /* 叶子飘落效果 */
+        .leaf {
+            position: absolute;
+            top: -50px;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            z-index: -1;
+            user-select: none;
         }
         
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #7ee787 }
-        }
-
-        /* 新增：主题切换按钮 */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 20px;
-            padding: 8px 15px;
-            color: #c9d1d9;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s;
-        }
-
-        .theme-toggle:hover {
-            background: #30363d;
-        }
-
-        /* 浅色主题 */
-        body.light-theme {
-            background: #f6f8fa;
-            color: #24292f;
-        }
-
-        body.light-theme .terminal {
-            background: #ffffff;
-            border-color: #d0d7de;
-        }
-
-        body.light-theme .terminal-header {
-            background: #f6f8fa;
-            border-bottom-color: #d0d7de;
-        }
-
-        body.light-theme .card {
-            background: #ffffff;
-            border-color: #d0d7de;
-        }
-
-        /* 新增：访客计数器 */
-        .visitor-counter {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 10px 15px;
-            font-size: 0.9rem;
-            color: #7ee787;
-        }
-
-        /* 新增：音乐播放器 */
-        .music-player {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #21262d;
-            border: 1px solid #30363d;
-            border-radius: 8px;
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .music-control {
-            background: none;
-            border: none;
-            color: #c9d1d9;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        /* 新增：数字雨效果容器 */
-        #matrix-rain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -2;
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- 主题切换按钮 -->
-    <button class="theme-toggle" id="themeToggle">🌙 暗色模式</button>
-
-    <!-- 音乐播放器 -->
-    <div class="music-player" id="musicPlayer" style="display: none;">
-        <button class="music-control" id="playBtn">▶️</button>
-        <span id="nowPlaying">背景音乐</span>
-        <button class="music-control" id="muteBtn">🔊</button>
-    </div>
-
-    <!-- 访客计数器 -->
-    <div class="visitor-counter">
-        访客: <span id="visitorCount">1</span>
-    </div>
-
-    <div class="container">
-        <!-- 终端界面 -->
-        <div class="terminal">
-            <div class="terminal-header">
-                <div class="terminal-buttons">
-                    <div class="terminal-button close"></div>
-                    <div class="terminal-button minimize"></div>
-                    <div class="terminal-button maximize"></div>
-                </div>
-                <div class="terminal-title">terminal — bash — 80×24</div>
+    <!-- 叶子飘落效果 -->
+    <div id="leaves-container"></div>
+    
+    <!-- 头部 -->
+    <header>
+        <div class="header-content">
+            <div class="profile-img">
+                <i class="fas fa-seedling"></i>
             </div>
-            <div class="terminal-body">
-                <div class="output">
-                    <span style="color: #7ee787;">visitor@yourdomain.com</span>:<span style="color: #58a6ff;">~</span>$ welcome
-                </div>
-                <div class="output">
-                    <div class="typewriter">
-                        <span style="color: #ff7b72;">欢迎来到我的数字世界!</span>
+            <h1>张明 | 农业数据分析专家</h1>
+            <p class="tagline">专注于药效实验数据分析、作物生长模型与农业决策支持系统</p>
+        </div>
+    </header>
+    
+    <!-- 导航 -->
+    <nav>
+        <div class="nav-container">
+            <a href="#about" class="nav-link">关于我</a>
+            <a href="#skills" class="nav-link">专业技能</a>
+            <a href="#projects" class="nav-link">研究项目</a>
+            <a href="#publications" class="nav-link">学术成果</a>
+            <a href="#contact" class="nav-link">联系我</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <!-- 关于我 -->
+        <section id="about" class="card fade-in">
+            <h2><i class="fas fa-user"></i> 关于我</h2>
+            <p>我是一名专注于农业数据分析和药效实验研究的专业人士，拥有8年农业科学和数据科学交叉领域经验。致力于通过数据分析优化农业生产，提高作物产量和品质。</p>
+            <p>我的工作重点是利用统计模型和机器学习方法分析农药效果、肥料利用率以及环境因素对作物生长的影响，为农业生产提供科学依据。</p>
+        </section>
+        
+        <!-- 专业技能 -->
+        <section id="skills" class="fade-in">
+            <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">专业技能</h2>
+            <div class="cards">
+                <div class="card">
+                    <h2><i class="fas fa-chart-line"></i> 数据分析</h2>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>R / Python 统计分析</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>实验设计与方差分析</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>数据可视化</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="output">
-                    这是一个由 GitHub Pages + Cloudflare 驱动的个人空间。
-                    在这里，我分享我的项目、想法和探索。
+                
+                <div class="card">
+                    <h2><i class="fas fa-leaf"></i> 农业科学</h2>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>药效试验设计与评估</span>
+                            <span>92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>作物生长模型</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>病虫害预测模型</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="output">
-                    输入 <span style="color: #7ee787;">'help'</span> 查看可用命令...
+                
+                <div class="card">
+                    <h2><i class="fas fa-laptop-code"></i> 技术工具</h2>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>R / Python 编程</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>GIS 与遥感技术</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>数据库管理</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 75%;"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="command-line">
-                    <span class="prompt">visitor@yourdomain.com:~$</span>
-                    <input type="text" class="command" id="command-input" placeholder="输入命令..." autofocus>
-                    <span class="cursor">|</span>
-                </div>
-                <div id="command-output"></div>
             </div>
-        </div>
+        </section>
         
-        <!-- 内容卡片 -->
-        <div class="cards">
-            <div class="card">
-                <h3>关于我</h3>
-                <p>一名热爱技术的开发者，喜欢探索Web技术、自动化和创意编程。</p>
-                <ul>
-                    <li>📍 基于地球的碳基生命</li>
-                    <li>💻 全栈开发者</li>
-                    <li>🌱 正在学习: Cloudflare, AI, Web3</li>
-                    <li>🎯 当前目标: <span id="currentGoal">构建更酷的网站</span></li>
-                </ul>
+        <!-- 数据可视化展示 -->
+        <section class="data-visualization fade-in">
+            <h2 class="viz-title">数据分析案例展示</h2>
+            <div class="charts-container">
+                <div class="chart">
+                    <h3 class="chart-title">农药效果对比分析</h3>
+                    <div id="pesticide-chart" style="height: 180px; background: linear-gradient(180deg, var(--light-green) 40%, var(--secondary-green) 40%, var(--secondary-green) 70%, var(--primary-green) 70%); border-radius: 4px; position: relative;">
+                        <div style="position: absolute; bottom: 10px; left: 20px; color: white; font-weight: bold;">处理A: 85%</div>
+                        <div style="position: absolute; bottom: 40px; left: 20px; color: white; font-weight: bold;">处理B: 72%</div>
+                        <div style="position: absolute; bottom: 70px; left: 20px; color: white; font-weight: bold;">对照: 45%</div>
+                    </div>
+                </div>
+                
+                <div class="chart">
+                    <h3 class="chart-title">作物产量相关性分析</h3>
+                    <div style="height: 180px; display: flex; align-items: flex-end; justify-content: space-around; padding: 0 10px;">
+                        <div style="width: 40px; background: var(--secondary-green); height: 80%; border-radius: 4px 4px 0 0; position: relative;">
+                            <div style="position: absolute; bottom: -25px; width: 100%; text-align: center;">氮肥</div>
+                        </div>
+                        <div style="width: 40px; background: var(--secondary-green); height: 65%; border-radius: 4px 4px 0 0; position: relative;">
+                            <div style="position: absolute; bottom: -25px; width: 100%; text-align: center;">磷肥</div>
+                        </div>
+                        <div style="width: 40px; background: var(--secondary-green); height: 90%; border-radius: 4px 4px 0 0; position: relative;">
+                            <div style="position: absolute; bottom: -25px; width: 100%; text-align: center;">钾肥</div>
+                        </div>
+                        <div style="width: 40px; background: var(--secondary-green); height: 55%; border-radius: 4px 4px 0 0; position: relative;">
+                            <div style="position: absolute; bottom: -25px; width: 100%; text-align: center;">水分</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <div class="card">
-                <h3>我的项目</h3>
-                <p>我一直在构建有趣的项目：</p>
-                <ul>
-                    <li><a href="#" onclick="executeCommand('project demo')">个人自动化系统</a> - 自动化日常任务</li>
-                    <li><a href="#" onclick="executeCommand('project viz')">数据可视化工具</a> - 将复杂数据转化为直观图表</li>
-                    <li><a href="#" onclick="executeCommand('project open')">开源贡献</a> - 参与多个开源项目</li>
-                    <li><a href="#" onclick="executeCommand('project secret')">秘密项目</a> - 🔒 开发中</li>
-                </ul>
+            <!-- 实验数据表格 -->
+            <h3 style="margin-top: 2rem; color: var(--primary-green);">近期药效实验数据摘要</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>实验编号</th>
+                        <th>处理组</th>
+                        <th>作物</th>
+                        <th>病虫害发生率(%)</th>
+                        <th>产量(kg/ha)</th>
+                        <th>效果评估</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>EXP-2023-01</td>
+                        <td>新型生物农药A</td>
+                        <td>水稻</td>
+                        <td>12.5</td>
+                        <td>6,800</td>
+                        <td>优秀</td>
+                    </tr>
+                    <tr>
+                        <td>EXP-2023-02</td>
+                        <td>化学农药B</td>
+                        <td>水稻</td>
+                        <td>8.3</td>
+                        <td>7,200</td>
+                        <td>优秀</td>
+                    </tr>
+                    <tr>
+                        <td>EXP-2023-03</td>
+                        <td>新型生物农药A</td>
+                        <td>玉米</td>
+                        <td>15.2</td>
+                        <td>9,100</td>
+                        <td>良好</td>
+                    </tr>
+                    <tr>
+                        <td>EXP-2023-04</td>
+                        <td>对照组</td>
+                        <td>水稻</td>
+                        <td>42.7</td>
+                        <td>5,200</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- 研究项目 -->
+        <section id="projects" class="fade-in">
+            <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">研究项目</h2>
+            <div class="cards">
+                <div class="card">
+                    <h2><i class="fas fa-flask"></i> 农药效果评估系统</h2>
+                    <p>开发了一套基于机器学习的农药效果评估系统，能够根据环境因素和作物特性预测农药效果，准确率达89%。</p>
+                    <ul>
+                        <li>整合10年历史实验数据</li>
+                        <li>建立多因子响应模型</li>
+                        <li>开发用户友好的Web界面</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h2><i class="fas fa-chart-bar"></i> 作物生长预测模型</h2>
+                    <p>基于气象数据、土壤条件和田间管理措施，构建了主要作物的生长预测模型，为精准农业提供决策支持。</p>
+                    <ul>
+                        <li>整合遥感与地面观测数据</li>
+                        <li>开发生长阶段识别算法</li>
+                        <li>实现产量预测功能</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h2><i class="fas fa-table"></i> 农业实验数据管理平台</h2>
+                    <p>设计并实施了一套农业实验数据管理系统，提高了数据收集、存储和分析的效率，减少了人工错误。</p>
+                    <ul>
+                        <li>标准化数据录入流程</li>
+                        <li>实现数据可视化分析</li>
+                        <li>支持多用户协作</li>
+                    </ul>
+                </div>
             </div>
+        </section>
+        
+        <!-- 学术成果 -->
+        <section id="publications" class="card fade-in">
+            <h2><i class="fas fa-book"></i> 学术成果</h2>
+            <ul>
+                <li>Zhang, M., et al. (2023). "基于机器学习的农药效果预测模型研究"。《农业科学学报》，45(2), 123-135.</li>
+                <li>Zhang, M., & Li, X. (2022). "多因子方差分析在药效试验中的应用"。《植物保护》，38(4), 56-62.</li>
+                <li>Zhang, M., et al. (2021). "环境因素对生物农药效果的影响分析"。《生态农业研究》，29(3), 78-85.</li>
+                <li>Zhang, M. (2020). "农业实验数据的统计分析方法与实践"。科学出版社。</li>
+            </ul>
+        </section>
+        
+        <!-- 联系表单 -->
+        <section id="contact" class="contact-form fade-in">
+            <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">联系我</h2>
+            <p>如果您对我的工作感兴趣，或有合作意向，请随时与我联系。</p>
             
-            <div class="card">
-                <h3>联系我</h3>
-                <p>想聊聊技术或合作？通过这些方式找到我：</p>
-                <ul>
-                    <li>📧 <a href="mailto:hello@yourdomain.com">hello@yourdomain.com</a></li>
-                    <li>🐙 <a href="https://github.com/yourusername">GitHub</a></li>
-                    <li>🐦 <a href="#">Twitter</a></li>
-                    <li>💼 <a href="#">LinkedIn</a></li>
-                </ul>
-                <button onclick="executeCommand('contact form')" style="margin-top: 10px; background: #238636; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">发送消息</button>
-            </div>
-        </div>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">姓名</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="subject">主题</label>
+                    <input type="text" id="subject" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">消息</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                
+                <button type="submit" class="btn">发送消息</button>
+            </form>
+        </section>
     </div>
-
-    <!-- 数字雨画布 -->
-    <canvas id="matrix-rain"></canvas>
+    
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            </div>
+            <p>© 2023 张明 - 农业数据分析专家 | 邮箱: zhangming@agridata.com | 电话: +86 138-XXXX-XXXX</p>
+        </div>
+    </footer>
 
     <script>
-        // 创建浮动背景元素
-        function createFloatingElements() {
-            const count = 20;
-            for (let i = 0; i < count; i++) {
-                const floating = document.createElement('div');
-                floating.classList.add('floating');
-                
-                const size = Math.random() * 6 + 2;
-                floating.style.width = `${size}px`;
-                floating.style.height = `${size}px`;
-                floating.style.left = `${Math.random() * 100}vw`;
-                floating.style.top = `${Math.random() * 100}vh`;
-                
-                const duration = Math.random() * 20 + 10;
-                floating.style.animation = `float ${duration}s linear infinite`;
-                
-                document.body.appendChild(floating);
-            }
+        // 叶子飘落效果
+        function createLeaves() {
+            const leavesContainer = document.getElementById('leaves-container');
+            const leafTypes = ['🍂', '🌿', '🍁', '🥬'];
             
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes float {
-                    0% {
-                        transform: translate(0, 0) rotate(0deg);
-                        opacity: 0.7;
-                    }
-                    25% {
-                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(90deg);
-                    }
-                    50% {
-                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(180deg);
-                        opacity: 0.3;
-                    }
-                    75% {
-                        transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(270deg);
-                    }
-                    100% {
-                        transform: translate(0, 0) rotate(360deg);
-                        opacity: 0.7;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
+            for (let i = 0; i < 15; i++) {
+                const leaf = document.createElement('div');
+                leaf.className = 'leaf';
+                leaf.textContent = leafTypes[Math.floor(Math.random() * leafTypes.length)];
+                
+                // 随机位置
+                const leftPos = Math.random() * 100;
+                leaf.style.left = `${leftPos}vw`;
+                
+                // 随机动画参数
+                const duration = 10 + Math.random() * 20;
+                const delay = Math.random() * 20;
+                const size = 0.5 + Math.random() * 1;
+                
+                leaf.style.animation = `fall ${duration}s linear ${delay}s infinite`;
+                leaf.style.fontSize = `${size}rem`;
+                leaf.style.opacity = 0.5 + Math.random() * 0.5;
+                
+                leavesContainer.appendChild(leaf);
+            }
         }
         
-        // 主题切换功能
-        function setupThemeToggle() {
-            const themeToggle = document.getElementById('themeToggle');
-            const currentTheme = localStorage.getItem('theme') || 'dark';
+        // 表单提交处理
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的消息！我会尽快回复您。');
+            this.reset();
+        });
+        
+        // 滚动动画
+        function setupScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
             
-            if (currentTheme === 'light') {
-                document.body.classList.add('light-theme');
-                themeToggle.textContent = '🌞 浅色模式';
-            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
             
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('light-theme');
-                if (document.body.classList.contains('light-theme')) {
-                    localStorage.setItem('theme', 'light');
-                    themeToggle.textContent = '🌞 浅色模式';
-                } else {
-                    localStorage.setItem('theme', 'dark');
-                    themeToggle.textContent = '🌙 暗色模式';
-                }
+            fadeElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.8s, transform 0.8s';
+                observer.observe(el);
             });
         }
         
-        // 访客计数器（模拟）
-        function setupVisitorCounter() {
-            let count = localStorage.getItem('visitorCount') || 1;
-            count = parseInt(count) + 1;
-            localStorage.setItem('visitorCount', count);
-            document.getElementById('visitorCount').textContent = count;
-        }
-        
-        // 音乐播放器功能
-        function setupMusicPlayer() {
-            const musicPlayer = document.getElementById('musicPlayer');
-            const playBtn = document.getElementById('playBtn');
-            const muteBtn = document.getElementById('muteBtn');
-            let isPlaying = false;
-            
-            // 显示音乐播放器
-            musicPlayer.style.display = 'flex';
-            
-            playBtn.addEventListener('click', () => {
-                isPlaying = !isPlaying;
-                playBtn.textContent = isPlaying ? '⏸️' : '▶️';
-                // 在实际使用中，这里可以控制音频播放
-                if (isPlaying) {
-                    document.getElementById('nowPlaying').textContent = '🎵 背景音乐';
-                }
-            });
-            
-            muteBtn.addEventListener('click', () => {
-                const isMuted = muteBtn.textContent === '🔇';
-                muteBtn.textContent = isMuted ? '🔊' : '🔇';
-            });
-        }
-        
-        // 数字雨效果
-        function setupMatrixRain() {
-            const canvas = document.getElementById('matrix-rain');
-            const ctx = canvas.getContext('2d');
-            
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            
-            const chars = '01';
-            const charSize = 14;
-            const columns = canvas.width / charSize;
-            const drops = [];
-            
-            for (let i = 0; i < columns; i++) {
-                drops[i] = 1;
-            }
-            
-            function draw() {
-                ctx.fillStyle = 'rgba(13, 17, 23, 0.05)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
-                ctx.fillStyle = '#7ee787';
-                ctx.font = charSize + 'px monospace';
-                
-                for (let i = 0; i < drops.length; i++) {
-                    const text = chars.charAt(Math.floor(Math.random() * chars.length));
-                    ctx.fillText(text, i * charSize, drops[i] * charSize);
-                    
-                    if (drops[i] * charSize > canvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    
-                    drops[i]++;
-                }
-            }
-            
-            setInterval(draw, 33);
-            
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-        }
-        
-        // 扩展命令处理
-        function setupCommandLine() {
-            const commandInput = document.getElementById('command-input');
-            const commandOutput = document.getElementById('command-output');
-            
-            const commands = {
-                help: () => `可用命令:
-  about     - 关于我
-  projects  - 我的项目
-  contact   - 联系信息
-  clear     - 清空终端
-  date      - 显示当前日期
-  weather   - 查看天气（模拟）
-  matrix    - 开启/关闭数字雨
-  music     - 控制背景音乐
-  theme     - 切换主题
-  echo <文本> - 回显文本
-  joke      - 听个笑话
-  secret    - 发现隐藏功能`,
-                
-                about: () => `我是一名全栈开发者，对创造优雅解决复杂问题的方案充满热情。
-在我的数字花园里，我探索技术、设计和创意的交汇点。
-
-技能栈:
-  • 前端: HTML/CSS/JavaScript, React, Vue
-  • 后端: Node.js, Python, Cloudflare Workers
-  • 工具: Git, Docker, VS Code`,
-                
-                projects: () => `我的项目:
-  • 个人自动化系统 - 使用脚本自动化日常任务
-  • 数据可视化工具 - 将复杂数据转化为直观图表
-  • 多个开源贡献 - 参与社区驱动的项目
-  • 秘密项目 - 🤫 即将公布`,
-                
-                contact: () => `联系方式:
-  📧 邮箱: hello@yourdomain.com
-  🐙 GitHub: github.com/yourusername
-  🐦 Twitter: @yourusername
-  💼 LinkedIn: linkedin.com/in/yourusername`,
-                
-                date: () => new Date().toLocaleString('zh-CN'),
-                
-                clear: () => {
-                    commandOutput.innerHTML = '';
-                    return '';
-                },
-                
-                echo: (args) => args.join(' '),
-                
-                weather: () => `天气预报（模拟）:
-  🌤️  北京: 15°C, 晴朗
-  🌧️  上海: 18°C, 小雨
-  ❄️  哈尔滨: -5°C, 雪
-  数据更新时间: ${new Date().toLocaleTimeString('zh-CN')}`,
-                
-                matrix: () => {
-                    const canvas = document.getElementById('matrix-rain');
-                    canvas.style.display = canvas.style.display === 'none' ? 'block' : 'none';
-                    return `数字雨效果 ${canvas.style.display === 'none' ? '已关闭' : '已开启'}`;
-                },
-                
-                music: () => {
-                    const player = document.getElementById('musicPlayer');
-                    player.style.display = player.style.display === 'none' ? 'flex' : 'none';
-                    return `音乐播放器 ${player.style.display === 'none' ? '已隐藏' : '已显示'}`;
-                },
-                
-                theme: () => {
-                    document.getElementById('themeToggle').click();
-                    return '主题已切换';
-                },
-                
-                joke: () => {
-                    const jokes = [
-                        "为什么程序员喜欢黑暗模式？因为光会吸引bug！",
-                        "我写代码的速度比光速还快...至少在截止日期前是这样。",
-                        "十个程序员挤在公交车里，没人下车。为什么？因为他们会互相\"继承\"。",
-                        "程序员最常用的谎言：1. 我以后再写文档 2. 这在我电脑上是好的 3. 只需要改一行代码"
-                    ];
-                    return jokes[Math.floor(Math.random() * jokes.length)];
-                },
-                
-                secret: () => {
-                    setTimeout(() => {
-                        const output = document.createElement('div');
-                        output.className = 'output';
-                        output.innerHTML = '<span style="color: #ff7b72;">🎉 恭喜你发现了隐藏功能！</span>\n你获得了\"数字探险家\"成就！';
-                        commandOutput.appendChild(output);
-                        commandOutput.scrollTop = commandOutput.scrollHeight;
-                    }, 1000);
-                    return '正在解锁隐藏功能...';
-                },
-                
-                // 项目演示命令
-                'project demo': () => `个人自动化系统演示:
-  
-  这个项目帮助我自动化日常任务:
-  • 📧 自动分类和回复邮件
-  • 📊 自动生成日报和周报
-  • 🗂️ 自动整理下载文件夹
-  • 🔄 自动备份重要文件
-  
-  技术栈: Python, Bash, Cron Jobs
-  状态: ✅ 运行中`,
-                
-                'project viz': () => `数据可视化工具:
-  
-  将复杂数据转化为直观的交互式图表:
-  • 📈 实时数据仪表板
-  • 🌍 地理数据可视化
-  • 🔗 网络关系图
-  • 📊 自定义图表类型
-  
-  技术栈: D3.js, React, Node.js
-  状态: 🚧 持续开发中`,
-                
-                'project open': () => `开源贡献:
-  
-  我积极参与的开源项目:
-  • 🔧 工具库维护
-  • 🐛 Bug修复和功能开发
-  • 📚 文档改进
-  • 🌐 国际化支持
-  
-  理念: 回馈社区，共同进步`,
-                
-                'project secret': () => `秘密项目:
-  
-  🤫 这个项目还在保密阶段...
-  
-  提示:
-  • 涉及人工智能和创意编程
-  • 预计下个季度公布
-  • 可能会改变一些东西
-  
-  敬请期待...`,
-                
-                'contact form': () => {
-                    setTimeout(() => {
-                        const output = document.createElement('div');
-                        output.className = 'output';
-                        output.innerHTML = `
-联系表单（模拟）:
-  
-姓名: [____________]
-邮箱: [____________]
-消息: [________________________]
-                      [________________________]
-                      [________________________]
-  
-              [ 取消 ]       [ 发送消息 ]
-  
-注意: 这是一个演示。实际使用时可以集成真实表单处理服务。`;
-                        commandOutput.appendChild(output);
-                        commandOutput.scrollTop = commandOutput.scrollHeight;
-                    }, 500);
-                    return '正在加载联系表单...';
-                }
-            };
-            
-            // 全局函数，让HTML可以调用
-            window.executeCommand = function(cmd) {
-                const parts = cmd.split(' ');
-                const command = parts[0];
-                const args = parts.slice(1);
-                
-                if (commands[command]) {
-                    const result = commands[command](args);
-                    if (result) {
-                        addOutput(result);
-                    }
-                }
-            };
-            
-            function addOutput(text) {
-                const output = document.createElement('div');
-                output.className = 'output';
-                output.textContent = text;
-                commandOutput.appendChild(output);
-                commandOutput.scrollTop = commandOutput.scrollHeight;
-            }
-            
-            commandInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    const input = this.value.trim();
-                    this.value = '';
-                    
-                    if (input === '') return;
-                    
-                    const inputLine = document.createElement('div');
-                    inputLine.className = 'output';
-                    inputLine.innerHTML = `<span style="color: #7ee787;">visitor@yourdomain.com</span>:<span style="color: #58a6ff;">~</span>$ ${input}`;
-                    commandOutput.appendChild(inputLine);
-                    
-                    const parts = input.split(' ');
-                    const cmd = parts[0].toLowerCase();
-                    const args = parts.slice(1);
-                    
-                    let result = '';
-                    if (commands[cmd]) {
-                        result = commands[cmd](args);
-                    } else {
-                        result = `命令未找到: ${cmd}。输入 'help' 查看可用命令。`;
-                    }
-                    
-                    if (result) {
-                        const outputLine = document.createElement('div');
-                        outputLine.className = 'output';
-                        outputLine.textContent = result;
-                        commandOutput.appendChild(outputLine);
-                    }
-                    
-                    commandOutput.scrollTop = commandOutput.scrollHeight;
-                }
-            });
-        }
-        
-        // 动态目标更新
-        function setupDynamicGoals() {
-            const goals = [
-                "构建更酷的网站",
-                "学习新的框架",
-                "贡献开源项目",
-                "写技术博客",
-                "构建个人API",
-                "学习云原生技术"
-            ];
-            
-            let currentIndex = 0;
-            const goalElement = document.getElementById('currentGoal');
-            
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % goals.length;
-                goalElement.style.opacity = 0;
-                
-                setTimeout(() => {
-                    goalElement.textContent = goals[currentIndex];
-                    goalElement.style.opacity = 1;
-                }, 500);
-            }, 3000);
-        }
-        
-        // 初始化所有功能
+        // 初始化
         document.addEventListener('DOMContentLoaded', function() {
-            createFloatingElements();
-            setupThemeToggle();
-            setupVisitorCounter();
-            setupMusicPlayer();
-            setupMatrixRain();
-            setupCommandLine();
-            setupDynamicGoals();
-            
-            // 添加一些初始输出
-            setTimeout(() => {
-                const output = document.getElementById('command-output');
-                const welcome = document.createElement('div');
-                welcome.className = 'output';
-                welcome.innerHTML = '<span style="color: #58a6ff;">提示:</span> 试试输入 <span style="color: #7ee787;">secret</span> 发现隐藏功能！';
-                output.appendChild(welcome);
-            }, 2000);
+            createLeaves();
+            setupScrollAnimations();
         });
     </script>
 </body>
