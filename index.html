@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>潘旭 | 农业数据分析与植物保护专家</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* 基础样式 - 农业主题色彩 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
         :root {
             --primary-green: #2d5a27;
             --secondary-green: #4a7c59;
@@ -15,14 +21,6 @@
             --sand: #d4b896;
             --cream: #f5f1e6;
             --dark-text: #333333;
-            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -39,14 +37,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
-        }
-        
-        section {
-            margin-bottom: 4rem;
-        }
-        
-        h1, h2, h3 {
-            color: var(--primary-green);
         }
         
         /* 头部样式 */
@@ -160,7 +150,7 @@
         .card {
             background: white;
             border-radius: 8px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             transition: transform 0.3s, box-shadow 0.3s;
             border-top: 4px solid var(--secondary-green);
@@ -294,7 +284,7 @@
         .data-visualization {
             background: white;
             border-radius: 8px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin: 3rem 0;
         }
@@ -330,7 +320,7 @@
         .contact-form {
             background: white;
             border-radius: 8px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin: 3rem 0;
         }
@@ -496,7 +486,7 @@
         .philosophy {
             background: white;
             border-radius: 8px;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             padding: 2rem;
             margin: 2rem 0;
             text-align: center;
@@ -527,7 +517,7 @@
             background: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
         
@@ -570,155 +560,8 @@
             margin-right: 0.5rem;
             margin-bottom: 0.5rem;
         }
-        
-        /* 统计数据部分 */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .stat-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary-green);
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            color: var(--earth-brown);
-            font-size: 0.9rem;
-        }
-        
-        /* 博客文章部分 */
-        .blog-posts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .blog-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-        
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .blog-image {
-            height: 180px;
-            background-color: var(--light-green);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-green);
-            font-size: 2rem;
-        }
-        
-        .blog-content {
-            padding: 1.5rem;
-        }
-        
-        .blog-title {
-            color: var(--primary-green);
-            margin-bottom: 0.5rem;
-        }
-        
-        .blog-date {
-            color: var(--earth-brown);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .blog-excerpt {
-            margin-bottom: 1rem;
-        }
-        
-        .read-more {
-            color: var(--secondary-green);
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .read-more i {
-            margin-left: 5px;
-            transition: transform 0.3s;
-        }
-        
-        .read-more:hover i {
-            transform: translateX(5px);
-        }
-        
-        /* 服务部分 */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-        }
-        
-        .service-title {
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-        }
-        
-        /* 关注领域标签 */
-        .focus-areas {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 1rem 0;
-        }
-        
-        .focus-area {
-            margin: 0.5rem 1rem;
-            padding: 0.5rem 1rem;
-            background: var(--light-green);
-            border-radius: 20px;
-            color: var(--primary-green);
-            font-weight: 500;
-        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <!-- 叶子飘落效果 -->
@@ -753,40 +596,18 @@
             <a href="#skills" class="nav-link">专业技能</a>
             <a href="#experience" class="nav-link">专业经历</a>
             <a href="#projects" class="nav-link">项目展示</a>
-            <a href="#blog" class="nav-link">专业见解</a>
+            <a href="#philosophy" class="nav-link">专业理念</a>
             <a href="#contact" class="nav-link">联系交流</a>
         </div>
     </nav>
     
     <div class="container">
         <!-- 关于我 -->
-        <section id="about" class="fade-in">
-            <div class="card">
-                <h2><i class="fas fa-user"></i> 关于我</h2>
-                <p>我是一名专注于农业数据分析与植物保护的专业人士，拥有北京农学院植物保护本科学位和丰富的农业技术研发与数据分析经验。致力于通过数据分析优化农业生产，提高作物产量和品质。</p>
-                <p>我的工作重点是利用统计模型和数据分析方法优化农药使用效果、分析作物生长数据以及管理现代化农业基地运营，为农业生产提供科学依据和技术支持。</p>
-                <p>我热爱农业科学，相信数据驱动的决策能够为可持续农业带来革新。在植物保护、数据分析与现代农业技术融合方面有着深入的研究和实践经验。</p>
-            </div>
-            
-            <!-- 统计数据 -->
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-number">5+</div>
-                    <div class="stat-label">年专业经验</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">完成项目</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">10万+</div>
-                    <div class="stat-label">培育种苗</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">95%+</div>
-                    <div class="stat-label">定植成活率</div>
-                </div>
-            </div>
+        <section id="about" class="card fade-in">
+            <h2><i class="fas fa-user"></i> 关于我</h2>
+            <p>我是一名专注于农业数据分析与植物保护的专业人士，拥有北京农学院植物保护本科学位和丰富的农业技术研发与数据分析经验。致力于通过数据分析优化农业生产，提高作物产量和品质。</p>
+            <p>我的工作重点是利用统计模型和数据分析方法优化农药使用效果、分析作物生长数据以及管理现代化农业基地运营，为农业生产提供科学依据和技术支持。</p>
+            <p>我热爱农业科学，相信数据驱动的决策能够为可持续农业带来革新。在植物保护、数据分析与现代农业技术融合方面有着深入的研究和实践经验。</p>
         </section>
         
         <!-- 专业技能 -->
@@ -1028,50 +849,8 @@
             </div>
         </section>
         
-        <!-- 专业见解 -->
-        <section id="blog" class="fade-in">
-            <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">专业见解</h2>
-            <div class="blog-posts">
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">数据驱动的精准农业实践</h3>
-                        <div class="blog-date">2024年8月</div>
-                        <p class="blog-excerpt">探讨如何利用数据分析技术优化农业生产决策，提高资源利用效率，实现精准施肥、精准灌溉和精准病虫害防治。</p>
-                        <a href="#" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-bug"></i>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">生态友好的病虫害管理策略</h3>
-                        <div class="blog-date">2024年6月</div>
-                        <p class="blog-excerpt">分享生物农药与化学农药复配的研究成果，探讨如何在保证防治效果的同时减少化学农药使用量，保护生态环境。</p>
-                        <a href="#" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <div class="blog-content">
-                        <h3 class="blog-title">现代化农业基地管理经验分享</h3>
-                        <div class="blog-date">2024年4月</div>
-                        <p class="blog-excerpt">总结在管理大型农业基地过程中的经验教训，包括团队管理、生产计划制定、技术实施和质量控制等方面。</p>
-                        <a href="#" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
         <!-- 个人理念 -->
-        <section class="philosophy fade-in">
+        <section id="philosophy" class="philosophy fade-in">
             <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">专业理念</h2>
             <p>我相信现代农业的未来在于科技与传统的完美结合，数据驱动的决策能够为可持续农业带来革新。</p>
             
@@ -1083,51 +862,11 @@
             
             <div style="margin-top: 2rem;">
                 <h3 style="color: var(--secondary-green); margin-bottom: 1rem;">关注领域</h3>
-                <div class="focus-areas">
-                    <div class="focus-area">精准农业</div>
-                    <div class="focus-area">生态农药</div>
-                    <div class="focus-area">数据驱动决策</div>
-                    <div class="focus-area">可持续农业</div>
-                    <div class="focus-area">智能温室管理</div>
-                    <div class="focus-area">农业数据分析</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 服务内容 -->
-        <section class="fade-in">
-            <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">专业服务</h2>
-            <div class="services">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3 class="service-title">农业数据分析</h3>
-                    <p>利用Python、R等工具进行农业数据分析和可视化，为农业生产决策提供数据支持。</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-flask"></i>
-                    </div>
-                    <h3 class="service-title">农药效果评估</h3>
-                    <p>设计和实施农药田间试验，评估农药效果，优化农药使用方案。</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3 class="service-title">农业技术咨询</h3>
-                    <p>提供作物栽培、病虫害防治、温室管理等方面的技术咨询服务。</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3 class="service-title">项目管理</h3>
-                    <p>协助农业项目的规划、实施和管理，确保项目顺利推进。</p>
+                <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+                    <div style="margin: 0.5rem 1rem; padding: 0.5rem 1rem; background: var(--light-green); border-radius: 20px; color: var(--primary-green);">精准农业</div>
+                    <div style="margin: 0.5rem 1rem; padding: 0.5rem 1rem; background: var(--light-green); border-radius: 20px; color: var(--primary-green);">生态农药</div>
+                    <div style="margin: 0.5rem 1rem; padding: 0.5rem 1rem; background: var(--light-green); border-radius: 20px; color: var(--primary-green);">数据驱动决策</div>
+                    <div style="margin: 0.5rem 1rem; padding: 0.5rem 1rem; background: var(--light-green); border-radius: 20px; color: var(--primary-green);">可持续农业</div>
                 </div>
             </div>
         </section>
