@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>农业数据分析专家 | 药效实验与作物研究</title>
+    <title>潘旭 | 农业数据分析与植物保护专家</title>
     <style>
         /* 基础样式 - 农业主题色彩 */
         * {
@@ -90,6 +90,23 @@
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            margin: 0 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-item i {
+            margin-right: 0.5rem;
         }
         
         /* 导航样式 */
@@ -180,7 +197,7 @@
         
         .skill-name {
             display: flex;
-            justify-content: between;
+            justify-content: space-between;
             margin-bottom: 0.5rem;
         }
         
@@ -195,6 +212,72 @@
             height: 100%;
             background: var(--secondary-green);
             border-radius: 4px;
+        }
+        
+        /* 工作经历时间线 */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--secondary-green);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--secondary-green);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
         }
         
         /* 数据可视化展示区 */
@@ -231,28 +314,6 @@
             color: var(--primary-green);
             margin-bottom: 1rem;
             text-align: center;
-        }
-        
-        /* 实验数据表格 */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1.5rem;
-        }
-        
-        .data-table th, .data-table td {
-            padding: 0.8rem;
-            text-align: left;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        .data-table th {
-            background: var(--light-green);
-            color: var(--primary-green);
-        }
-        
-        .data-table tr:hover {
-            background: #f9f9f9;
         }
         
         /* 联系表单 */
@@ -367,6 +428,33 @@
                 margin: 0.25rem;
                 padding: 0.5rem 1rem;
             }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-item {
+                margin: 0.5rem 0;
+            }
         }
         
         /* 动画效果 */
@@ -393,6 +481,27 @@
             0% { transform: translateY(0) rotate(0deg); }
             100% { transform: translateY(100vh) rotate(360deg); }
         }
+        
+        /* 求职意向 */
+        .job-intention {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .intention-item {
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .intention-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -406,8 +515,23 @@
             <div class="profile-img">
                 <i class="fas fa-seedling"></i>
             </div>
-            <h1>张明 | 农业数据分析专家</h1>
-            <p class="tagline">专注于药效实验数据分析、作物生长模型与农业决策支持系统</p>
+            <h1>潘旭 | 农业数据分析与植物保护专家</h1>
+            <p class="tagline">23届植物保护本科 | 2年农业数据分析与项目管理经验 | 专注于现代农业技术与数据分析融合</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>17777009832</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>panxv.work@qq.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>广西壮族自治区</span>
+                </div>
+            </div>
         </div>
     </header>
     
@@ -416,8 +540,9 @@
         <div class="nav-container">
             <a href="#about" class="nav-link">关于我</a>
             <a href="#skills" class="nav-link">专业技能</a>
-            <a href="#projects" class="nav-link">研究项目</a>
-            <a href="#publications" class="nav-link">学术成果</a>
+            <a href="#experience" class="nav-link">工作经历</a>
+            <a href="#projects" class="nav-link">项目经验</a>
+            <a href="#education" class="nav-link">教育背景</a>
             <a href="#contact" class="nav-link">联系我</a>
         </div>
     </nav>
@@ -426,8 +551,26 @@
         <!-- 关于我 -->
         <section id="about" class="card fade-in">
             <h2><i class="fas fa-user"></i> 关于我</h2>
-            <p>我是一名专注于农业数据分析和药效实验研究的专业人士，拥有8年农业科学和数据科学交叉领域经验。致力于通过数据分析优化农业生产，提高作物产量和品质。</p>
-            <p>我的工作重点是利用统计模型和机器学习方法分析农药效果、肥料利用率以及环境因素对作物生长的影响，为农业生产提供科学依据。</p>
+            <p>我是一名专注于农业数据分析与植物保护的专业人士，拥有北京农学院植物保护本科学位和2年农业技术研发与数据分析经验。致力于通过数据分析优化农业生产，提高作物产量和品质。</p>
+            <p>我的工作重点是利用统计模型和数据分析方法优化农药使用效果、分析作物生长数据以及管理现代化农业基地运营，为农业生产提供科学依据和技术支持。</p>
+            <p>目前在职，希望寻找农业技术、数据分析或相关领域的新机会，期望工作地点在广西壮族自治区。</p>
+        </section>
+        
+        <!-- 求职意向 -->
+        <section class="job-intention fade-in">
+            <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;"><i class="fas fa-briefcase"></i> 求职意向</h2>
+            <div class="intention-item">
+                <strong>期望职位：</strong>农业/林业技术员、数据开发、养殖技术员
+            </div>
+            <div class="intention-item">
+                <strong>期望行业：</strong>农业、林业、农/林/牧/渔服务业
+            </div>
+            <div class="intention-item">
+                <strong>期望工作地：</strong>广西壮族自治区
+            </div>
+            <div class="intention-item">
+                <strong>期望薪资：</strong>面议
+            </div>
         </section>
         
         <!-- 专业技能 -->
@@ -438,7 +581,7 @@
                     <h2><i class="fas fa-chart-line"></i> 数据分析</h2>
                     <div class="skill">
                         <div class="skill-name">
-                            <span>R / Python 统计分析</span>
+                            <span>Python / R 统计分析</span>
                             <span>90%</span>
                         </div>
                         <div class="skill-bar">
@@ -447,7 +590,7 @@
                     </div>
                     <div class="skill">
                         <div class="skill-name">
-                            <span>实验设计与方差分析</span>
+                            <span>Excel / SPSS 数据处理</span>
                             <span>95%</span>
                         </div>
                         <div class="skill-bar">
@@ -463,13 +606,22 @@
                             <div class="skill-level" style="width: 85%;"></div>
                         </div>
                     </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>机器学习应用</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%;"></div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="card">
-                    <h2><i class="fas fa-leaf"></i> 农业科学</h2>
+                    <h2><i class="fas fa-leaf"></i> 农业技术</h2>
                     <div class="skill">
                         <div class="skill-name">
-                            <span>药效试验设计与评估</span>
+                            <span>病虫害识别与防治</span>
                             <span>92%</span>
                         </div>
                         <div class="skill-bar">
@@ -478,16 +630,25 @@
                     </div>
                     <div class="skill">
                         <div class="skill-name">
-                            <span>作物生长模型</span>
-                            <span>88%</span>
+                            <span>农药药效试验</span>
+                            <span>95%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-level" style="width: 88%;"></div>
+                            <div class="skill-level" style="width: 95%;"></div>
                         </div>
                     </div>
                     <div class="skill">
                         <div class="skill-name">
-                            <span>病虫害预测模型</span>
+                            <span>温室大棚管理</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>无土栽培技术</span>
                             <span>85%</span>
                         </div>
                         <div class="skill-bar">
@@ -497,10 +658,28 @@
                 </div>
                 
                 <div class="card">
-                    <h2><i class="fas fa-laptop-code"></i> 技术工具</h2>
+                    <h2><i class="fas fa-laptop-code"></i> 技术与管理</h2>
                     <div class="skill">
                         <div class="skill-name">
-                            <span>R / Python 编程</span>
+                            <span>项目管理</span>
+                            <span>88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>团队领导</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill">
+                        <div class="skill-name">
+                            <span>基地运营</span>
                             <span>90%</span>
                         </div>
                         <div class="skill-bar">
@@ -509,152 +688,151 @@
                     </div>
                     <div class="skill">
                         <div class="skill-name">
-                            <span>GIS 与遥感技术</span>
-                            <span>80%</span>
+                            <span>C1驾照</span>
+                            <span>100%</span>
                         </div>
                         <div class="skill-bar">
-                            <div class="skill-level" style="width: 80%;"></div>
-                        </div>
-                    </div>
-                    <div class="skill">
-                        <div class="skill-name">
-                            <span>数据库管理</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 75%;"></div>
+                            <div class="skill-level" style="width: 100%;"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- 数据可视化展示 -->
-        <section class="data-visualization fade-in">
-            <h2 class="viz-title">数据分析案例展示</h2>
-            <div class="charts-container">
-                <div class="chart">
-                    <h3 class="chart-title">农药效果对比分析</h3>
-                    <div id="pesticide-chart" style="height: 180px; background: linear-gradient(180deg, var(--light-green) 40%, var(--secondary-green) 40%, var(--secondary-green) 70%, var(--primary-green) 70%); border-radius: 4px; position: relative;">
-                        <div style="position: absolute; bottom: 10px; left: 20px; color: white; font-weight: bold;">处理A: 85%</div>
-                        <div style="position: absolute; bottom: 40px; left: 20px; color: white; font-weight: bold;">处理B: 72%</div>
-                        <div style="position: absolute; bottom: 70px; left: 20px; color: white; font-weight: bold;">对照: 45%</div>
+        <!-- 工作经历 -->
+        <section id="experience" class="fade-in">
+            <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">工作经历</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024年11月—至今 (1年)</div>
+                        <h3>广西来宾新三农业科技有限公司</h3>
+                        <p><strong>职位：</strong>项目经理/主管</p>
+                        <p><strong>部门：</strong>研发部</p>
+                        <ul>
+                            <li>负责超过15亩现代化连栋温室大棚和134亩露天种植地的日常运营</li>
+                            <li>领导并协调20+名种植工人的生产活动，制定周度工作计划</li>
+                            <li>主导黄瓜、西红柿、辣椒、木瓜等6+品类的高效栽培</li>
+                            <li>负责新型肥料和农药的田间药效试验，全年提交20份实验报告</li>
+                            <li>年度成功培育优质种苗超10万株，定植成活率达95%+</li>
+                        </ul>
                     </div>
                 </div>
                 
-                <div class="chart">
-                    <h3 class="chart-title">作物产量相关性分析</h3>
-                    <div style="height: 180px; display: flex; align-items: flex-end; justify-content: space-around; padding: 0 10px;">
-                        <div style="width: 40px; background: var(--secondary-green); height: 80%; border-radius: 4px 4px 0 0; position: relative;">
-                            <div style="position: absolute; bottom: -25px; width: 100%; text-align: center;">氮肥</div>
-                        </div>
-                        <div style="width: 40px; background: var(--secondary-green); height: 65%; border-radius: 4px 4px 0 0; position: relative;">
-                            <div style="position: absolute; bottom: -25px; width: 100%; text-align: center;">磷肥</div>
-                        </div>
-                        <div style="width: 40px; background: var(--secondary-green); height: 90%; border-radius: 4px 4px 0 0; position: relative;">
-                            <div style="position: absolute; bottom: -25px; width: 100%; text-align: center;">钾肥</div>
-                        </div>
-                        <div style="width: 40px; background: var(--secondary-green); height: 55%; border-radius: 4px 4px 0 0; position: relative;">
-                            <div style="position: absolute; bottom: -25px; width: 100%; text-align: center;">水分</div>
-                        </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2024年01月—2024年03月 (2个月)</div>
+                        <h3>广西特色作物研究院</h3>
+                        <p><strong>职位：</strong>数据分析师（兼职）</p>
+                        <ul>
+                            <li>基于机器学习技术的柑橘树病害诊断模型的开发</li>
+                            <li>运用R语言和Python进行数据预处理、模型构建和性能评估</li>
+                            <li>实施交叉验证和特征重要性分析，提升模型泛化能力</li>
+                        </ul>
                     </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023年11月—2024年02月 (3个月)</div>
+                        <h3>广西泛娱互动科技有限公司</h3>
+                        <p><strong>职位：</strong>短视频拍摄/后期制作</p>
+                        <ul>
+                            <li>策划并制作短视频，提升品牌知名度和吸引顾客</li>
+                            <li>熟练运用Adobe Premiere Pro、剪映等视频编辑软件</li>
+                            <li>与团队紧密合作，确保视频内容与营销策略一致</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023年03月—2023年06月 (3个月)</div>
+                        <h3>北京农林科学研究院</h3>
+                        <p><strong>职位：</strong>农业科学研究员（实习）</p>
+                        <ul>
+                            <li>研究井冈霉素对瓜蚜生物学和共生菌的影响</li>
+                            <li>进行毒力测定实验，计算LC10、LC20、LC50等关键毒性参数</li>
+                            <li>利用qPCR技术检测井冈霉素对瓜蚜内共生菌Buchnera的影响</li>
+                            <li>获得北京农林科学院优秀实习生证书</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022年08月—2022年11月 (3个月)</div>
+                        <h3>广西特色作物研究院</h3>
+                        <p><strong>职位：</strong>农业科学研究员（实习）</p>
+                        <ul>
+                            <li>研究化学农药与曲霉孢子的复配对柑橘木虱的药效联合毒力测定</li>
+                            <li>独立完成柑橘木虱成虫的LC50测定实验</li>
+                            <li>利用等效线法和共毒因子法设计混配方案，实现显著增效作用</li>
+                            <li>实现杀虫剂用量显著减少（呋虫胺减少69.17%，吡虫啉减少74.31%）</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 项目经验 -->
+        <section id="projects" class="fade-in">
+            <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">项目经验</h2>
+            <div class="cards">
+                <div class="card">
+                    <h2><i class="fas fa-flask"></i> 农药与真菌复配研究</h2>
+                    <p>研究棘孢曲霉与六种杀虫剂对柑橘木虱成虫的毒力，设计混配方案实现减量增效。</p>
+                    <ul>
+                        <li>实现杀虫剂用量减少60-74%</li>
+                        <li>掌握生物农药毒力测定方法和数据分析</li>
+                        <li>应用等效线法和共毒因子法</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h2><i class="fas fa-chart-bar"></i> 柑橘病害诊断模型</h2>
+                    <p>基于机器学习技术开发柑橘树病害诊断模型，通过分析化合物含量数据训练模型。</p>
+                    <ul>
+                        <li>使用Python和R语言进行数据分析和建模</li>
+                        <li>实施交叉验证和特征重要性分析</li>
+                        <li>提升模型泛化能力和诊断精确度</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h2><i class="fas fa-seedling"></i> 现代农业基地管理</h2>
+                    <p>全面负责15亩温室大棚和134亩露天种植地的运营管理，实现高效生产。</p>
+                    <ul>
+                        <li>领导20+人团队，制定生产计划</li>
+                        <li>实施精准环境调控和水肥一体化管理</li>
+                        <li>年度培育优质种苗超10万株</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 教育背景 -->
+        <section id="education" class="card fade-in">
+            <h2><i class="fas fa-graduation-cap"></i> 教育背景</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <div>
+                    <h3 style="color: var(--primary-green); margin-bottom: 0.5rem;">北京农学院</h3>
+                    <p><strong>专业：</strong>植物保护 | 本科 | 全日制</p>
+                    <p><strong>时间：</strong>2019年07月 - 2023年07月</p>
                 </div>
             </div>
             
-            <!-- 实验数据表格 -->
-            <h3 style="margin-top: 2rem; color: var(--primary-green);">近期药效实验数据摘要</h3>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>实验编号</th>
-                        <th>处理组</th>
-                        <th>作物</th>
-                        <th>病虫害发生率(%)</th>
-                        <th>产量(kg/ha)</th>
-                        <th>效果评估</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>EXP-2023-01</td>
-                        <td>新型生物农药A</td>
-                        <td>水稻</td>
-                        <td>12.5</td>
-                        <td>6,800</td>
-                        <td>优秀</td>
-                    </tr>
-                    <tr>
-                        <td>EXP-2023-02</td>
-                        <td>化学农药B</td>
-                        <td>水稻</td>
-                        <td>8.3</td>
-                        <td>7,200</td>
-                        <td>优秀</td>
-                    </tr>
-                    <tr>
-                        <td>EXP-2023-03</td>
-                        <td>新型生物农药A</td>
-                        <td>玉米</td>
-                        <td>15.2</td>
-                        <td>9,100</td>
-                        <td>良好</td>
-                    </tr>
-                    <tr>
-                        <td>EXP-2023-04</td>
-                        <td>对照组</td>
-                        <td>水稻</td>
-                        <td>42.7</td>
-                        <td>5,200</td>
-                        <td>-</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        
-        <!-- 研究项目 -->
-        <section id="projects" class="fade-in">
-            <h2 style="color: var(--primary-green); margin-bottom: 1.5rem;">研究项目</h2>
-            <div class="cards">
-                <div class="card">
-                    <h2><i class="fas fa-flask"></i> 农药效果评估系统</h2>
-                    <p>开发了一套基于机器学习的农药效果评估系统，能够根据环境因素和作物特性预测农药效果，准确率达89%。</p>
-                    <ul>
-                        <li>整合10年历史实验数据</li>
-                        <li>建立多因子响应模型</li>
-                        <li>开发用户友好的Web界面</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h2><i class="fas fa-chart-bar"></i> 作物生长预测模型</h2>
-                    <p>基于气象数据、土壤条件和田间管理措施，构建了主要作物的生长预测模型，为精准农业提供决策支持。</p>
-                    <ul>
-                        <li>整合遥感与地面观测数据</li>
-                        <li>开发生长阶段识别算法</li>
-                        <li>实现产量预测功能</li>
-                    </ul>
-                </div>
-                
-                <div class="card">
-                    <h2><i class="fas fa-table"></i> 农业实验数据管理平台</h2>
-                    <p>设计并实施了一套农业实验数据管理系统，提高了数据收集、存储和分析的效率，减少了人工错误。</p>
-                    <ul>
-                        <li>标准化数据录入流程</li>
-                        <li>实现数据可视化分析</li>
-                        <li>支持多用户协作</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 学术成果 -->
-        <section id="publications" class="card fade-in">
-            <h2><i class="fas fa-book"></i> 学术成果</h2>
+            <h4 style="color: var(--secondary-green); margin-top: 1.5rem;">在校项目经历</h4>
             <ul>
-                <li>Zhang, M., et al. (2023). "基于机器学习的农药效果预测模型研究"。《农业科学学报》，45(2), 123-135.</li>
-                <li>Zhang, M., & Li, X. (2022). "多因子方差分析在药效试验中的应用"。《植物保护》，38(4), 56-62.</li>
-                <li>Zhang, M., et al. (2021). "环境因素对生物农药效果的影响分析"。《生态农业研究》，29(3), 78-85.</li>
-                <li>Zhang, M. (2020). "农业实验数据的统计分析方法与实践"。科学出版社。</li>
+                <li><strong>美国大学生数学建模比赛</strong> (2020年) - 获得一等奖，使用Python、MATLAB进行数据分析和建模</li>
+                <li><strong>班主任助理</strong> (2021-2022年) - 负责新生适应指导和学生问题解决</li>
+                <li><strong>勤工俭学</strong> (2019-2022年) - 负责多媒体设备管理和维护</li>
+            </ul>
+            
+            <h4 style="color: var(--secondary-green); margin-top: 1.5rem;">语言能力</h4>
+            <ul>
+                <li><strong>英语：</strong> CET-4，精通听说读写</li>
+                <li><strong>日语：</strong> 一般水平</li>
             </ul>
         </section>
         
@@ -694,11 +872,11 @@
         <div class="footer-content">
             <div class="social-links">
                 <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-researchgate"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-google-scholar"></i></a>
-                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-qq"></i></a>
+                <a href="mailto:panxv.work@qq.com" class="social-link"><i class="fas fa-envelope"></i></a>
             </div>
-            <p>© 2023 张明 - 农业数据分析专家 | 邮箱: zhangming@agridata.com | 电话: +86 138-XXXX-XXXX</p>
+            <p>© 2025 潘旭 - 农业数据分析与植物保护专家 | 邮箱: panxv.work@qq.com | 电话: 17777009832</p>
         </div>
     </footer>
 
