@@ -14,6 +14,121 @@
     <!-- Font Awesome 图标库 -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <style>
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 30px;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        .modal-header {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-title {
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+        
+        .modal-body {
+            line-height: 1.6;
+        }
+        
+        .project-detail {
+            margin-bottom: 20px;
+        }
+        
+        .project-detail h4 {
+            color: var(--secondary-green);
+            margin-bottom: 10px;
+        }
+        
+        .project-detail ul {
+            padding-left: 20px;
+        }
+        
+        .project-detail li {
+            margin-bottom: 8px;
+        }
+        
+        .project-tags-modal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .project-tag-modal {
+            background-color: var(--light-green);
+            color: var(--primary-green);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 90%;
+                margin: 10% auto;
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- 叶子飘落效果 -->
@@ -331,7 +446,7 @@
                             <span class="project-tag">数据分析</span>
                             <span class="project-tag">生态农业</span>
                         </div>
-                        <a href="#" class="btn btn-small" aria-label="了解更多关于农药与真菌复配研究">了解更多</a>
+                        <button class="btn btn-small project-detail-btn" data-project="project1">了解更多</button>
                     </div>
                 </article>
                 
@@ -347,7 +462,7 @@
                             <span class="project-tag">Python</span>
                             <span class="project-tag">R语言</span>
                         </div>
-                        <a href="#" class="btn btn-small" aria-label="了解更多关于柑橘病害诊断模型">了解更多</a>
+                        <button class="btn btn-small project-detail-btn" data-project="project2">了解更多</button>
                     </div>
                 </article>
                 
@@ -363,7 +478,7 @@
                             <span class="project-tag">农业技术</span>
                             <span class="project-tag">团队领导</span>
                         </div>
-                        <a href="#" class="btn btn-small" aria-label="了解更多关于现代农业基地管理">了解更多</a>
+                        <button class="btn btn-small project-detail-btn" data-project="project3">了解更多</button>
                     </div>
                 </article>
             </div>
@@ -441,6 +556,145 @@
         </section>
     </main>
     
+    <!-- 项目详情模态框 -->
+    <div id="project1-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">农药与真菌复配研究</h2>
+                <div class="project-tags-modal">
+                    <span class="project-tag-modal">农药研究</span>
+                    <span class="project-tag-modal">数据分析</span>
+                    <span class="project-tag-modal">生态农业</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="project-detail">
+                    <h4>项目概述</h4>
+                    <p>该项目研究棘孢曲霉（Aspergillus aculeatus）与六种杀虫剂（阿维菌素、呋虫胺、吡虫啉、噻虫胺、氟啶虫胺腈和氟吡呋喃酮）对柑橘木虱成虫的毒力，通过混配方案实现显著的增效作用，减少化学农药使用量。</p>
+                </div>
+                
+                <div class="project-detail">
+                    <h4>主要职责与成就</h4>
+                    <ul>
+                        <li>独立完成了对柑橘木虱成虫的LC50测定实验，成功获取了棘孢曲霉和六种药剂的毒力数据</li>
+                        <li>分析了棘孢曲霉与六种药剂的相容性，发现在特定浓度下，棘孢曲霉的孢子萌发率和菌丝生长受到显著影响</li>
+                        <li>利用等效线法和共毒因子法，设计了呋虫胺、吡虫啉和氟啶虫胺腈与棘孢曲霉的混配方案，实现了显著的增效作用</li>
+                        <li>通过混配方案，实现了杀虫剂用量的显著减少（呋虫胺减少69.17%，吡虫啉减少74.31%，氟啶虫胺腈减少60.78%）</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail">
+                    <h4>技术细节</h4>
+                    <ul>
+                        <li>捕捉柑橘木虱并进行生物测定</li>
+                        <li>化学农药的配制和复配</li>
+                        <li>使用喷雾塔进行喷药（喷雾法）</li>
+                        <li>调配琼脂培养基并接种曲霉</li>
+                        <li>记录曲霉孢子的萌发情况和曲霉的生长情况</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail">
+                    <h4>项目成果</h4>
+                    <p>该项目展现了在生态农业中减量增效的潜力，为减少化学农药使用提供了科学依据，对推动可持续农业发展具有重要意义。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="project2-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">柑橘病害诊断模型</h2>
+                <div class="project-tags-modal">
+                    <span class="project-tag-modal">机器学习</span>
+                    <span class="project-tag-modal">Python</span>
+                    <span class="project-tag-modal">R语言</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="project-detail">
+                    <h4>项目概述</h4>
+                    <p>基于机器学习技术的柑橘树病害诊断模型的开发，旨在通过分析树体内化合物含量与疾病状态数据训练模型，实现对柑橘病害的准确诊断。</p>
+                </div>
+                
+                <div class="project-detail">
+                    <h4>主要职责与成就</h4>
+                    <ul>
+                        <li>运用R语言和Python进行数据预处理、模型构建、性能评估和结果可视化</li>
+                        <li>与农业领域专家进行深入交流，获取柑橘树病害特征的专业知识，优化模型设计</li>
+                        <li>实施交叉验证和特征重要性分析，显著提升了模型的泛化能力和诊断精确度</li>
+                        <li>确保了分析过程的技术多样性和结果的可靠性</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail">
+                    <h4>技术细节</h4>
+                    <ul>
+                        <li>使用Python和R语言进行复杂的数据分析和机器学习建模</li>
+                        <li>应用多种机器学习算法，特别是在生物信息学领域的应用</li>
+                        <li>数据处理、模型评估和数据可视化的专业技能</li>
+                        <li>与农业专家合作，确保模型的专业性和实用性</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail">
+                    <h4>项目成果</h4>
+                    <p>该模型为柑橘病害管理提供了有力的数据支持，提高了病害诊断的准确性和效率，有助于早期发现和防治柑橘病害，减少经济损失。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="project3-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title">现代农业基地管理</h2>
+                <div class="project-tags-modal">
+                    <span class="project-tag-modal">项目管理</span>
+                    <span class="project-tag-modal">农业技术</span>
+                    <span class="project-tag-modal">团队领导</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="project-detail">
+                    <h4>项目概述</h4>
+                    <p>全面负责15亩现代化连栋温室大棚和134亩露天种植地的运营管理，通过科学的管理方法和技术应用，实现高效生产和资源优化。</p>
+                </div>
+                
+                <div class="project-detail">
+                    <h4>主要职责与成就</h4>
+                    <ul>
+                        <li>独立负责超过15亩现代化连栋温室大棚的日常运营，134亩露天种植地运营</li>
+                        <li>直接领导并协调20+名种植工人的生产活动，通过制定周度工作计划与任务分派，确保果蔬种植各环节有序推进</li>
+                        <li>主持日常班前会，明确当日工作重点与安全规范，并对员工进行现场技术指导</li>
+                        <li>主导黄瓜、西红柿、辣椒、木瓜等6+品类的高效栽培，全程管理从定植到采收的完整生长周期</li>
+                        <li>精准环境调控：根据作物不同生长阶段及季节变化，熟练调控大棚内的温度、湿度、光照与通风</li>
+                        <li>年度成功培育优质种苗超10万株，定植成活率达95%+</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail">
+                    <h4>技术应用</h4>
+                    <ul>
+                        <li>病虫害综合防治（IPM）：能够快速识别炭疽病、白粉病、蚜虫、红蜘蛛等10余种常见病虫害</li>
+                        <li>水肥一体化管理、无土栽培技术：负责制定并执行科学的水肥灌溉计划</li>
+                        <li>深度参与公司新产品验证体系，独立负责叶面肥、生物杀虫剂、病毒抑制剂等3类新产品的田间药效试验</li>
+                        <li>运用SPSS进行方差分析、显著性检验等统计处理，并利用Excel完成数据可视化图表制作</li>
+                    </ul>
+                </div>
+                
+                <div class="project-detail">
+                    <h4>项目成果</h4>
+                    <p>通过科学管理和技术创新，实现了农业生产的高效化和标准化，提高了作物产量和品质，为现代农业基地的运营管理提供了可复制的成功经验。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- 页脚 -->
     <footer role="contentinfo">
         <div class="footer-content">
@@ -456,5 +710,64 @@
 
     <!-- 引入JavaScript文件 -->
     <script src="js/script.js"></script>
+    
+    <script>
+        // 项目详情模态框功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有项目详情按钮
+            const projectButtons = document.querySelectorAll('.project-detail-btn');
+            
+            // 为每个按钮添加点击事件
+            projectButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project');
+                    const modal = document.getElementById(`${projectId}-modal`);
+                    
+                    if (modal) {
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden'; // 防止背景滚动
+                    }
+                });
+            });
+            
+            // 获取所有关闭按钮
+            const closeButtons = document.querySelectorAll('.close-modal');
+            
+            // 为每个关闭按钮添加点击事件
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    if (modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto'; // 恢复背景滚动
+                    }
+                });
+            });
+            
+            // 点击模态框外部关闭
+            window.addEventListener('click', function(event) {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // ESC键关闭模态框
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    const modals = document.querySelectorAll('.modal');
+                    modals.forEach(modal => {
+                        if (modal.style.display === 'block') {
+                            modal.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
