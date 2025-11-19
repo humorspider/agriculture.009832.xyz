@@ -138,10 +138,9 @@
     <header role="banner">
         <div class="header-content">
             <div class="profile-img">
-                <!-- 使用个人头像，如果没有则显示默认图标 -->
                 <img src="images/avatar.jpg" alt="潘旭的头像" class="avatar-image" 
-                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="default-avatar" aria-hidden="true">
+                     onerror="this.classList.add('error'); document.querySelector('.default-avatar').style.display='flex';">
+                <div class="default-avatar" style="display: none;" aria-hidden="true">
                     <i class="fas fa-seedling"></i>
                 </div>
             </div>
